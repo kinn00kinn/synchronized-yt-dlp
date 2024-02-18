@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #list-mp4.txtをおいているフォルダ
-cd /data/data/com.termux/files/home/storage/downloads/youtube-dl
+cd /data/data/com.termux/files/home/storage/downloads/synchronized-yt-dlp
 
 #読み込むファイル（改行区切りでurlが貼ってある）
 urlfile="list-mp4.txt"
@@ -28,9 +28,9 @@ done
 #並列処理
 for ((i=3; i<$filenum+3; i++)); do
   if test $i -eq $(($filenum+$tmp4)); then
-	  (yt-dlp  ${file[i]}; echo "<= "$(($i-$tmp5))" => "done) &
+	  (nohup yt-dlp  ${file[i]}; echo "<= "$(($i-$tmp5))" => "done) &
   else
-	  (yt-dlp  ${file[i]}; echo "<= "$(($i-$tmp5))" => "done) &
+	  (nohup yt-dlp  ${file[i]}; echo "<= "$(($i-$tmp5))" => "done) &
   fi
 
 done

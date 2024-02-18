@@ -1,5 +1,5 @@
 # はじめに
-hellscriptとはyt-dlpをベースとしたyoutubeをダウンロード出来るプログラムです．shellscriptを利用して並列にダウンロードするよう設計されているので，高速にダウンロードできます．
+synchronised-yt-dlpとはyt-dlpをベースとしたyoutubeをダウンロード出来るプログラムです．shellscriptを利用して並列にダウンロードするよう設計されているので，高速にダウンロードできます．
 
 # インストール方法
 ## 前提プログラムのインストール
@@ -7,8 +7,9 @@ hellscriptとはyt-dlpをベースとしたyoutubeをダウンロード出来る
 
 ```bash
 pkg update && pkg upgrade
-pkg install git awk python
+pkg install git awk python python-pip
 pip install yt-dlp
+termux-setup-storage
 ```
 
 ## このプログラムのインストール方法
@@ -23,6 +24,7 @@ chmod +x *.sh
 
 1. 保存場所を作る
 ```bash
+cd storage/downloads
 mkdir yt-dlp
 cd yt-dlp
 echo "#mp3" > list_mp3.txt
@@ -39,7 +41,7 @@ https://youtu.be/EtqP2xVE4iY
 
 3. synchronized-yt-dlpのフォルダに戻って実行
 ```bash
-cd synchronized-yt-dlp
+cd ~/synchronized-yt-dlp
 ./yt-dlp-mp3.sh
 ```
 
