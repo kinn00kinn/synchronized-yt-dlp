@@ -20,7 +20,7 @@ echo
 #fileにurlを代入
 for ((i=3; i<$filenum+3; i++)); do
   tmp1=`echo $i"p"`
-  file[i]=`sed -n $tmp1 list-mp3.txt`
+  file[i]=`sed -n $tmp1 list-mp4.txt`
   echo $tmp2". "${file[i]}
   tmp2=$(($tmp2 + $tmp3))
 done
