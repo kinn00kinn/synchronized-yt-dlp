@@ -24,7 +24,7 @@ done < "$urlfile"
 # 並列処理
 for ((i=0; i<${#file[@]}; i++)); do
   url=${file[i]}
-    nohup yt-dlp "$url" -f mp4 -P $"outdir" &
+    nohup yt-dlp "$url" -f mp4 -P "$outdir" &
 
   # プログレス表示
   echo "Processing file $((i+1))/$filenum"

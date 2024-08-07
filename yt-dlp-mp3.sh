@@ -19,7 +19,7 @@ grep -v '^#' "$urlfile" | while IFS= read -r url; do
   [ -z "$url" ] && continue
 
   # URLを処理
-  nohup yt-dlp -x -f "bestaudio" --audio-format mp3 --audio-quality 0 "$url" -P $"outdir" &
+  nohup yt-dlp -x -f "bestaudio" --audio-format mp3 --audio-quality 0 "$url" -P "$outdir" &
 
   # プログレス表示
   i=$((i+1))
