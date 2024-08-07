@@ -1,7 +1,6 @@
 #!/bin/bash
-
 # list-mp3.txtをおいているフォルダ
-cd /data/data/com.termux/files/home/storage/downloads/synchronized-yt-dlp || exit 1
+#cd /data/data/com.termux/files/home/storage/downloads/synchronized-yt-dlp || exit 1
 
 # 読み込むファイル（改行区切りでurlが貼ってある）
 urlfile="list-mp3.txt"
@@ -13,13 +12,12 @@ echo "filenumber: $filenum"
 echo
 
 # コメント行を除外してファイルにURLを代入
-mapfile -t file < <(grep -v '^#' "$urlfile" | sed -n "${1},\$p")
+mapfile -t file < <(grep -v '^#' "$urlfile" | sed -n '1,$p')
 
 # 並列処理
 for ((i=0; i<${#file[@]}; i++)); do
   url=${file[i]}
-  nohup yt-dlp -x -f "bestaudio" --audio-format mp3 --audio-quality 0 "$url" \
-    > "yt-dlp_${i}.log" 2>&1 &
+    nohup yt-dlp -x -f "bestaudio" -P src --audio-format mp3 --audio-quality 0 "$url" &
 
   # プログレス表示
   echo "Processing file $((i+1))/$filenum"
