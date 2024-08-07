@@ -5,7 +5,7 @@
 
 # 読み込むファイル（改行区切りでurlが貼ってある）
 urlfile="list-mp3.txt"
-outdir = "data"
+outdir="data"
 
 # ファイルの個数確認（コメント行を除外）
 filenum=$(grep -v '^#' "$urlfile" | wc -l)
