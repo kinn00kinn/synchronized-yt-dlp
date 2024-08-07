@@ -12,7 +12,13 @@ echo "filenumber: $filenum"
 echo
 
 # コメント行を除外してファイルにURLを代入
-mapfile -t file < <(grep -v '^#' "$urlfile" | sed -n '1,$p')
+file=()
+while IFS= read -r line; do
+  # 空行やコメント行を除外
+  if [[ -n "$line" && ! "$line" =~ ^# ]]; then
+    file+=("$line")
+  fi
+done < "$urlfile"
 
 # 並列処理
 for ((i=0; i<${#file[@]}; i++)); do
